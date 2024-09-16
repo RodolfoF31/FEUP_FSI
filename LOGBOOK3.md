@@ -1,0 +1,5 @@
+CTF Semana 3 (Wordpress CVE)
+
+O ataque foi iniciado, explorando ao máximo o website fornecido. Ao explorar o site foi possível encontrar um comentário que dava uma dica que o problema deste site seria com as versões do wordpress ou dos seus plugins. Como este site vendia wordpress dava para ver os plugins que estava a fornecer. Estas eram: "Wordpress 5.8.1", "WooCommerce plugin 5.7.1" e finalmente "Booster for WooCommerce plugin 5.4.3". 
+Antes de sequer descobrir esta secção com informação da versão dos plugins, tentamos utilizar outra técninas com bruteforce de password do admin (Hydra), enumeração de diretórios (Dirb) e ainda tentar usar o CVE-2022-21661(https://www.exploit-db.com/exploits/50663) mas sem sucesso apesar deste em teoria permitir executar uma sqlinjection nesta versão de wordpress. 
+Finalmente após nos apercebermos da versão do Booster do WooCommerce, encontramos um CVE de Authentication Bypass para as versões <=5.4.3 (https://www.exploit-db.com/exploits/50299). Com a execução do código presente no link da exploit database, foi possível entrar na conta do admin (user 1) sem necessidade da password dele.
